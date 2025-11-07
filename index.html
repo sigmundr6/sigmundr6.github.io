@@ -2,50 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CS 184 Assignments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hongyu (Hector) Li — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <h1>CS 184 Assignments</h1>
+  <header>
+    <h1>Hongyu (Hector) Li</h1>
+    <p>MSc Computing (AI/ML), Imperial College London</p>
+    <p><a href="mailto:jcsylhy@gmail.com">jcsylhy@gmail.com</a> | <a href="https://github.com/sigmundr6">GitHub</a></p>
+  </header>
 
-  <h2>📄 Assignments</h2>
-  <ul>
-    <li>
-      <a href="CS184/Assignment_1/CS_184_Assignment_1.pdf" target="_blank">
-        Assignment 1 – PDF
-      </a>
-    </li>
-    <li>
-      <a href="CS184/Assignment_2/CS_184_Assignment_2.pdf" target="_blank">
-        Assignment 2 – PDF
-      </a>
-    </li>
-    <li>
-      <a href="CS184/Assignment_3/CS_184_Assignment_3.pdf" target="_blank">
-        Assignment 3 – PDF
-      </a>
-    </li>
-  </ul>
+  <section id="graphics">
+    <h2>Computer Graphics Projects</h2>
+    <div class="projects">
 
-  <hr>
+      <div class="card">
+        <img src="images/rasterizer.png" alt="Rasterizer">
+        <div class="card-content">
+          <h3>Rasterizer (CS184 Assignment 1, C++)</h3>
+          <p>Implemented a full rasterization pipeline with triangle rasterization, supersampling, barycentric interpolation,
+             and mipmapping. Optimized bounding box rendering and analyzed floating-point precision issues.</p>
+          <a href="CS_184_Assignment_1.pdf">Read Technical Report →</a>
+        </div>
+      </div>
 
-  <h2>🖼️ Supplementary Figures</h2>
-  <p>Each assignment’s images are available in their respective folders. Click below to browse:</p>
-  <ul>
-    <li>
-      <a href="CS184/Assignment_1/images/" target="_blank">
-        Browse Assignment 1 Images
-      </a>
-    </li>
-    <li>
-      <a href="CS184/Assignment_2/images/" target="_blank">
-        Browse Assignment 2 Images
-      </a>
-    </li>
-    <li>
-      <a href="CS184/Assignment_3/images/" target="_blank">
-        Browse Assignment 3 Images
-      </a>
-    </li>
-  </ul>
+      <div class="card">
+        <img src="images/meshmodel.png" alt="Mesh Modelling">
+        <div class="card-content">
+          <h3>Mesh Modelling (CS184 Assignment 2, C++)</h3>
+          <p>Constructed and manipulated triangle meshes using a half-edge data structure. Implemented edge flips, splits,
+             and vertex smoothing with loop subdivision for smooth surface refinement.</p>
+          <a href="CS_184_Assignment_2.pdf">Read Technical Report →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/pathtracer_basic.png" alt="Basic Path Tracer">
+        <div class="card-content">
+          <h3>Basic Path Tracer (CS184 Assignment 3, C++)</h3>
+          <p>Developed a Monte Carlo path tracer supporting soft shadows, global illumination, and microfacet BRDFs.
+             Implemented BVH acceleration and multiple importance sampling for efficient light transport.</p>
+          <a href="CS_184_Assignment_3.pdf">Read Technical Report →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/bubble.gif" alt="Spectral Path Tracer">
+        <div class="card-content">
+          <h3>Spectral Path Tracer (Independent Project, C++)</h3>
+          <p>Extended the path tracer into a spectral renderer simulating thin-film interference. Implemented thin-film BSDF
+             and triplanar Perlin noise for iridescent soap-bubble effects.</p>
+          <a href="https://andvvo.github.io/bubbletracing/final-report/">View Final Report →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="systems">
+    <h2>Systems and AI Projects</h2>
+    <div class="projects">
+
+    <div class="card">
+    <img src="images/riscv_pipeline.png" alt="Conceptual 5-Stage Pipeline Diagram">
+    <div class="card-content">
+        <h3>Pipelined RISC-V CPU (Logisim)</h3>
+        <p>Built a 5-stage pipelined CPU implementing RV32I + MUL instructions in Logisim. Designed register file, 
+        ALU, immediate generator, and hazard detection logic for efficient execution and correctness.</p>
+        <p><em>Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</em></p>
+    </div>
+    </div>
+
+      <div class="card">
+        <img src="images/dungeon.png" alt="Dungeon Crawler">
+        <div class="card-content">
+          <h3>Procedural Dungeon Crawler (Java)</h3>
+          <p>Created a procedural dungeon generator with a class-based combat system, replay and save states,
+             and adaptive HUD overlays for immersive gameplay.</p>
+          <a href="#">Private Repository — Access on Request</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/wordnet.png" alt="WordNet Visualizer">
+        <div class="card-content">
+          <h3>WordNet Visualizer (Java)</h3>
+          <p>Parsed and visualized synonym-hyponym graphs using BFS traversal and pruning. Generated interactive HTML graph visualizations.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<section id="research">
+  <h2>Research</h2>
+
+  <div class="projects">
+
+    <div class="card">
+      <img src="images/wordbialgebra_slide.png" alt="Word Bialgebra Presentation">
+      <div class="card-content">
+        <h3>Cointeractions of Some Word Bialgebras</h3>
+        <p>Studied Hopf algebra structures and cointeractions between concatenation–deshuffle and shuffle–deconcatenation
+           bialgebras. Explored gradings, antipodes, and potential combinatorial applications.</p>
+        <p><em>University of Waterloo — Supervised by Prof. Karen Yeats</em></p>
+        <a href="Word_Bialgebra_Presentation.pdf">View Presentation Slides →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/qip_slide.png" alt="Quantum Algorithms Presentation">
+      <div class="card-content">
+        <h3>Quantum Algorithms for Finite Solvable Groups</h3>
+        <p>Presented an exposition of Watrous’ 2001 algorithm for computing orders of solvable groups using
+           quantum Fourier transforms and subgroup superpositions.</p>
+        <p><em>University of Waterloo — Supervised by Prof. Richard Cleve</em></p>
+        <a href="QIP_Presentation.pdf">View Presentation Slides →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <h3>Supersingular Isogeny Diffie–Hellman (SIDH) Cryptography</h3>
+        <p>Wrote an expository paper analyzing elliptic curve isogenies and the mathematical foundation of the
+           Supersingular Isogeny Diffie–Hellman key exchange protocol, focusing on its post-quantum security.</p>
+        <p><em>University of Waterloo — Supervised by Prof. Douglas Stebila</em></p>
+        <p><em>Research paper available upon request.</em></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <footer>
+    © 2025 Hongyu (Hector) Li — <a href="https://sigmundr6.github.io/">sigmundr6.github.io</a>
+  </footer>
 </body>
 </html>
