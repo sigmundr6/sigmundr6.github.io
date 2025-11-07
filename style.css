@@ -54,11 +54,11 @@ h2 {
 }
 .card img {
   width: 100%;
-  aspect-ratio: 16 / 9;  
   height: auto;
-  object-fit: contain;
-  background: #f3f3f3; 
   display: block;
+  object-fit: contain;
+  background: #f3f3f3;
+  border-bottom: 1px solid #eee;
 }
 .card-content {
   padding: 1.2rem;
