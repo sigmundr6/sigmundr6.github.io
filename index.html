@@ -43,27 +43,30 @@
         </div>
       </div>
 
-      <div class="card">
-        <img src="images/pathtracer_basic.png" alt="Basic Path Tracer">
+        <div class="card">
+        <img src="images/pathtracer_basic.png" alt="Basic Path Tracer Rendering">
         <div class="card-content">
-          <h3>Basic Path Tracer (CS184 Assignment 3, C++)</h3>
-          <p>Developed a Monte Carlo path tracer supporting soft shadows, global illumination, and diffuse BSDFs.
-             Implemented BVH acceleration and multiple importance sampling for efficient light transport.</p>
-             <p><em>Private Repository — Access on Request.</em></p>
-          <a href="CS_184_Assignment_3.pdf">Read Technical Report →</a>
+            <h3>Basic Path Tracer (CS184 Assignment 3, C++)</h3>
+            <p>Implemented a physically based Monte Carlo path tracer as the baseline rendering engine, supporting soft
+            shadows, global illumination, and diffuse and microfacet BSDFs. Integrated a bounding volume hierarchy (BVH)
+            for efficient ray–scene intersection and applied multiple importance sampling to improve convergence and
+            noise reduction in complex lighting environments.</p>
+            <p><em>Private Repository — Access on Request.</em></p>
         </div>
-      </div>
+        </div>
 
-      <div class="card">
-        <img src="images/bubble.gif" alt="Spectral Path Tracer">
+        <div class="card">
+        <img src="images/bubble.gif" alt="Spectral Path Tracer Rendering">
         <div class="card-content">
-          <h3>Spectral Path Tracer (Independent Project, C++)</h3>
-          <p>Extended the path tracer into a spectral renderer simulating thin-film interference. Implemented thin-film BSDF
-             and triplanar Perlin noise for iridescent soap-bubble effects.</p>
-             <p><em>Private Repository — Access on Request.</em></p>
-          <a href="https://andvvo.github.io/bubbletracing/final-report/">View Final Report →</a>
+            <h3>Spectral Path Tracer (Independent Project, C++)</h3>
+            <p>Developed a physically based spectral path tracer simulating thin-film interference to reproduce the
+            iridescent appearance of soap bubbles and oil films. Extended a Monte Carlo global illumination framework
+            to sample light transport across the visible spectrum with wavelength-dependent reflectance and dispersion.
+            Implemented a custom thin-film BSDF model accounting for phase shift and film thickness, combined with
+            triplanar Perlin noise to generate realistic interference patterns and surface variation.</p>
+            <p><em>Private Repository — Access on Request.</em></p>
         </div>
-      </div>
+        </div>
 
     </div>
   </section>
@@ -72,34 +75,42 @@
     <h2>Systems and AI Projects</h2>
     <div class="projects">
 
-    <div class="card">
-    <img src="images/riscv_pipeline.png" alt="Conceptual 5-Stage Pipeline Diagram">
-    <div class="card-content">
-        <h3>Pipelined RISC-V CPU (Logisim)</h3>
-        <p>Built a 5-stage pipelined CPU implementing RV32I + MUL instructions in Logisim. Designed register file, 
-        ALU, immediate generator, and hazard detection logic for efficient execution and correctness.</p>
-        <p><em>Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</em></p>
-    </div>
-    </div>
-
-      <div class="card">
-        <img src="images/dungeon.png" alt="Dungeon Crawler">
+        <div class="card">
+        <img src="images/riscv_pipeline.png" alt="Conceptual 5-Stage Pipeline Diagram">
         <div class="card-content">
-          <h3>Procedural Dungeon Crawler (Java)</h3>
-          <p>Created a procedural dungeon generator with a class-based combat system, replay and save states,
-             and adaptive HUD overlays for immersive gameplay.</p>
-          <p><em>Private Repository — Access on Request.</em></p>
+            <h3>Pipelined RISC-V CPU (Logisim)</h3>
+            <p>Implemented a fully functional 5-stage pipelined RISC-V processor (RV32I + M) featuring instruction fetch,
+            decode, execute, memory, and write-back stages. Designed and verified hazard detection and forwarding logic
+            for data dependencies, with precise pipeline register synchronization to maintain throughput and correctness.
+            Integrated a ROM-based control unit, immediate generator, and ALU supporting arithmetic, branch, and multiply
+            instructions. Achieved complete compliance with the RISC-V base specification and validated using extensive
+            test programs.</p>
+            <p><em>Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</em></p>
         </div>
-      </div>
+        </div>
 
-      <div class="card">
-        <img src="images/wordnet.png" alt="WordNet Visualizer">
+        <div class="card">
+        <img src="images/dungeon.png" alt="Procedural Dungeon Crawler Screenshot">
         <div class="card-content">
-          <h3>WordNet Visualizer (Java)</h3>
-          <p>Parsed and visualized synonym-hyponym graphs using BFS traversal and pruning. Generated interactive HTML graph visualizations.</p>
-          <p><em>Private Repository — Access on Request.</em></p>
+            <h3>Procedural Dungeon Crawler (Java)</h3>
+            <p>Engineered a high-performance procedural generation engine using density maps and a binary space
+            partition tree, capable of producing GiB-scale dungeons within seconds. Designed a class-based combat
+            system with enemy AI, leveling mechanics, and interactive objects to create complex gameplay. Integrated
+            an adaptive UI/HUD providing real-time grid data and layout adjustments across modes. Implemented a
+            robust multi-slot save and replay system ensuring complete game state persistence and reviewability.</p>
+            <p><em>Private Repository — Access on Request.</em></p>
         </div>
-      </div>
+        </div>
+
+        <div class="card">
+        <img src="images/wordnet.png" alt="WordNet Visualizer Screenshot">
+        <div class="card-content">
+            <h3>WordNet Visualizer (Java)</h3>
+            <p>Parsed large synonym–hyponym CSV datasets (400 MiB+) and constructed directed word graphs with efficient
+            BFS traversal and pruning. Generated interactive HTML visualizations for exploring lexical relationships.</p>
+            <p><em>Private Repository — Access on Request.</em></p>
+        </div>
+        </div>
 
     </div>
   </section>
@@ -108,6 +119,21 @@
   <h2>Research</h2>
 
   <div class="projects">
+
+    <div class="card">
+    <img src="images/des_mlp.png" alt="DES and MLP Paper Thumbnail">
+    <div class="card-content">
+        <h3>Studying S-Boxes and the Feistel Network in DES with the Multilayer Perceptron Model</h3>
+        <p>Conducted a linear cryptanalysis of the Data Encryption Standard (DES) using a multilayer perceptron (MLP)
+        model trained on plaintext–ciphertext pairs. Implemented Python and Mathematica experiments to analyze
+        how neural networks approximate S-box mappings and how imperfect S-box designs can be exploited. Explored
+        the correlation between training accuracy and the number of Feistel rounds, demonstrating how learning
+        behavior reveals structural patterns in block ciphers.</p>
+        <p><em>Independent Research — August 2021</em></p>
+        <p><em>Code and implementation details available upon request.</em></p>
+        <a href="MLP_DES.pdf">Read Paper →</a>
+    </div>
+    </div>
 
     <div class="card">
       <img src="images/wordbialgebra_slide.png" alt="Word Bialgebra Presentation">
