@@ -73,96 +73,105 @@
     </div>
   </section>
 
-  <section id="systems">
-    <h2>Systems and AI Projects</h2>
-    <div class="projects">
+  <!-- Systems & Languages -->
+<section id="systems">
+  <h2>Systems & Languages</h2>
+  <div class="projects">
 
-        <div class="card">
-        <img src="images/riscv_pipeline.png" alt="Conceptual 5-Stage Pipeline Diagram">
-        <div class="card-content">
-            <h3>Pipelined RISC-V CPU (Logisim)</h3>
-            <p>Implemented a fully functional 5-stage pipelined RISC-V processor (RV32I + M) featuring instruction fetch,
-            decode, execute, memory, and write-back stages. Designed and verified hazard detection and forwarding logic
-            for data dependencies, with precise pipeline register synchronization to maintain throughput and correctness.
-            Integrated a ROM-based control unit, immediate generator, and ALU supporting arithmetic, branch, and multiply
-            instructions. Achieved complete compliance with the RISC-V base specification and validated using extensive
-            test programs.</p>
-            <p><em>Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</em></p>
-        </div>
-        </div>
-
-        <div class="card">
-        <img src="images/dungeon.png" alt="Procedural Dungeon Crawler Screenshot">
-        <div class="card-content">
-            <h3>Procedural Dungeon Crawler (Java)</h3>
-            <p>Engineered a high-performance procedural generation engine using density maps and a binary space
-            partition tree, capable of producing GiB-scale dungeons within seconds. Designed a class-based combat
-            system with enemy AI, leveling mechanics, and interactive objects to create complex gameplay. Integrated
-            an adaptive UI/HUD providing real-time grid data and layout adjustments across modes. Implemented a
-            robust multi-slot save and replay system ensuring complete game state persistence and reviewability.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-        </div>
-        </div>
-
-        <div class="card">
-        <img src="images/MNIST.png" alt="MNIST Digits Dataset (Source: Wikipedia)">
-        <div class="card-content">
-            <h3>Image Classifier in RISC-V Assembly</h3>
-            <p>Built and optimized a multilayer perceptron (MLP) image classifier entirely in RISC-V assembly,
-            successfully classifying MNIST handwritten digits. Managed all memory allocation, matrix operations,
-            and activation computations manually at the hardware level, demonstrating efficient arithmetic and
-            control-flow design on a custom instruction set architecture.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-        </div>
-        </div>
-
-        <div class="card">
-        <img src="images/scm.png" alt="Scheme Interpreter REPL Screenshot">
-        <div class="card-content">
-            <h3>Scheme Interpreter (Python)</h3>
-            <p>Implemented a custom Scheme interpreter in Python supporting lexical and dynamic scoping, higher-order
-            functions, and tail recursion optimization. Built a recursive descent parser and an evaluator with
-            an environment model capable of handling closures and nested function calls efficiently.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-        </div>
-        </div>
-
-
-        <div class="card">
-        <img src="images/wordnet.png" alt="WordNet Visualizer Screenshot">
-        <div class="card-content">
-            <h3>WordNet Visualizer (Java)</h3>
-            <p>Parsed large synonym–hyponym CSV datasets (400 MiB+) and constructed directed word graphs with efficient
-            BFS traversal and pruning. Generated interactive HTML visualizations for exploring lexical relationships.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-        </div>
-        </div>
-
-        <div class="card">
-        <img src="images/snake.png" alt="Terminal Snake Game Screenshot">
-        <div class="card-content">
-            <h3>Terminal Snake (C)</h3>
-            <p>Implemented a classic Snake game in pure C with real-time keyboard input, dynamic memory management,
-            and terminal rendering. Built a custom game loop handling collision detection and state updates at fixed
-            frame rates. Designed a parser to read external text files defining board layouts and irregular wall structures,
-            allowing flexible level configuration from user input.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-        </div>
-        </div>
-
-        <div class="card">
-        <img src="images/2048.png" alt="2048 Game Board Screenshot">
-        <div class="card-content">
-            <h3>2048 Game (Java)</h3>
-            <p>Implemented the puzzle game 2048 in Java using an object-oriented design. Built a grid-based state manager
-            supporting tile merging, move history, and dynamic scoring. Integrated a responsive GUI with keyboard
-            controls and smooth tile animations to replicate the original gameplay experience.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-        </div>
-        </div>
-
+    <div class="card">
+      <img src="images/riscv_pipeline.png" alt="Conceptual 5-Stage Pipeline Diagram">
+      <div class="card-content">
+        <h3>Pipelined RISC-V CPU (Logisim)</h3>
+        <p>Implemented a fully functional 5-stage pipelined RISC-V processor (RV32I + M) featuring IF/ID/EX/MEM/WB
+           stages. Designed and verified hazard detection and forwarding, with precise pipeline-register
+           synchronization. Integrated a ROM-based control unit, immediate generator, and ALU for arithmetic,
+           branch, and multiply instructions; validated with extensive test programs.</p>
+        <p><em>Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</em></p>
+      </div>
     </div>
-  </section>
+
+    <div class="card">
+      <img src="images/scm.png" alt="Scheme Interpreter REPL Screenshot">
+      <div class="card-content">
+        <h3>Scheme Interpreter (Python)</h3>
+        <p>Implemented a custom Scheme interpreter supporting lexical and dynamic scoping, higher-order functions,
+           and tail-recursion optimization. Built a recursive-descent parser and an environment model for closures
+           and nested calls.</p>
+        <p><em>Private Repository — Access on Request.</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/snake.png" alt="Terminal Snake Game Screenshot">
+      <div class="card-content">
+        <h3>Terminal Snake (C)</h3>
+        <p>Built a terminal-rendered Snake in pure C with real-time input, dynamic memory management, and a fixed-step
+           loop for collision and state updates. Wrote a parser to load board states (including irregular walls) from
+           text files for configurable levels.</p>
+        <p><em>Private Repository — Access on Request.</em></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AI / Data -->
+<section id="ai-data">
+  <h2>AI / Data</h2>
+  <div class="projects">
+
+    <div class="card">
+      <img src="images/MNIST.png" alt="MNIST Digits Dataset (Source: Wikipedia)">
+      <div class="card-content">
+        <h3>Image Classifier in RISC-V Assembly</h3>
+        <p>Implemented a multilayer perceptron entirely in RISC-V assembly to classify MNIST digits. Manually managed
+           memory layout, matrix ops, and activation computations, demonstrating efficient arithmetic and control flow
+           on a custom ISA.</p>
+        <p><em>Private Repository — Access on Request.</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/wordnet.png" alt="WordNet Visualizer Screenshot">
+      <div class="card-content">
+        <h3>WordNet Visualizer (Java)</h3>
+        <p>Parsed large synonym–hyponym CSV datasets (400 MiB+) and constructed directed word graphs with efficient
+           BFS traversal and pruning. Generated interactive HTML visualizations for exploring lexical relationships.</p>
+        <p><em>Private Repository — Access on Request.</em></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Games & Interactive -->
+<section id="games">
+  <h2>Games & Interactive</h2>
+  <div class="projects">
+
+    <div class="card">
+      <img src="images/dungeon.png" alt="Procedural Dungeon Crawler Screenshot">
+      <div class="card-content">
+        <h3>Procedural Dungeon Crawler (Java)</h3>
+        <p>Engineered a high-performance generator using density maps and a BSP tree to produce GiB-scale dungeons in
+           seconds. Built a class-based combat system with enemy AI and leveling; integrated an adaptive HUD, and a
+           multi-slot save + full replay system for complete state persistence.</p>
+        <p><em>Private Repository — Access on Request.</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/2048.png" alt="2048 Game Board Screenshot">
+      <div class="card-content">
+        <h3>2048 Game (Java)</h3>
+        <p>Implemented 2048 with an object-oriented grid state manager, deterministic merging & spawning logic,
+           move history, scoring, and a responsive keyboard-driven GUI with smooth animations.</p>
+        <p><em>Private Repository — Access on Request.</em></p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <section id="research">
   <h2>Research</h2>
