@@ -85,6 +85,24 @@ section {
   scroll-margin-top: calc(var(--nav-h) + 16px);
 }
 
+.about {
+  max-width: 760px;        /* comfy reading width */
+  margin: 1.5rem auto 0;   /* center the block */
+  padding: 0 1.25rem;      /* side padding on mobile */
+  line-height: 1.7;
+  color: #444;
+}
+
+/* space between paragraphs */
+.about p {
+  margin: 0 0 1rem;
+}
+
+/* if you have a sticky topnav, ensure anchors aren't hidden */
+section {
+  scroll-margin-top: 72px; /* adjust if your nav/header height differs */
+}
+
 
 /* === Cards === */
 .card {
