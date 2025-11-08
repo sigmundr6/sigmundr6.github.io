@@ -60,6 +60,8 @@ h2 {
   margin: 0 auto;
   background: #f3f3f3;
 }
+.tall-img { max-height: 180px; background: #1e1e1e; padding: 8px 0; }
+.square-img { max-height: 220px; }
 .card-content {
   padding: 1.2rem;
 }
