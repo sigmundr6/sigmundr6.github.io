@@ -142,6 +142,13 @@ section {
   font-weight: 600;
 }
 
+#beyond {
+  background: #fffdf8;
+}
+#beyond h2 {
+  border-color: #f0e2b6;
+}
+
 /* === Footer === */
 footer {
   text-align: center;
