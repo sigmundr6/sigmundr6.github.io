@@ -41,6 +41,51 @@ h2 {
   padding: 2rem 0;
 }
 
+/* === Global UX === */
+html {
+  scroll-behavior: smooth;            /* smooth anchor scrolling */
+}
+:root {
+  --nav-h: 56px;                      /* tweak if you change nav padding/height */
+}
+
+/* === Top Navigation === */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  padding: .75rem 1rem;
+  background: #ffffffcc;              /* slightly translucent for a modern feel */
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #eee;
+  overflow-x: auto;                    /* small screens can scroll horizontally */
+  white-space: nowrap;
+}
+
+.topnav a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 600;
+  padding: .4rem .75rem;
+  border-radius: 999px;
+}
+
+.topnav a:hover,
+.topnav a:focus {
+  background: #eef4ff;
+  color: #0a58ca;
+  outline: none;
+}
+
+/* Ensure anchored sections don't hide under the sticky nav */
+section {
+  scroll-margin-top: calc(var(--nav-h) + 16px);
+}
+
+
 /* === Cards === */
 .card {
   background: #fff;
