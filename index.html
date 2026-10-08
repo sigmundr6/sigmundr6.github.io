@@ -161,6 +161,7 @@
   .card:hover .thumb img{transform:scale(1.045)}
   .thumb::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(180deg,transparent 62%,rgba(5,7,11,.5))}
+  .thumb svg.ph{width:100%;aspect-ratio:16/10;display:block}
   .card-body{padding:24px 24px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
   .tags{display:flex;flex-wrap:wrap;gap:8px}
   .tag{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
@@ -243,7 +244,7 @@
 
 <div class="strip" aria-hidden="true">
   <div class="strip-track" id="stripTrack">
-    <span>C++ <i>◆</i> Python <i>◆</i> Java <i>◆</i> C <i>◆</i> RISC-V Assembly <i>◆</i> Logisim <i>◆</i> Scheme <i>◆</i> Mathematica <i>◆</i>&nbsp;</span>
+    <span>C++ <i>◆</i> Python <i>◆</i> Java <i>◆</i> C <i>◆</i> CUDA <i>◆</i> PyTorch <i>◆</i> RISC-V Assembly <i>◆</i> Kubernetes <i>◆</i> Docker <i>◆</i> SQL <i>◆</i> Logisim <i>◆</i> Scheme <i>◆</i> Mathematica <i>◆</i>&nbsp;</span>
   </div>
 </div>
 
@@ -298,7 +299,7 @@
         <div class="card-body">
           <div class="tags"><span class="tag">C++</span><span class="tag alt">Independent project</span></div>
           <h3>Spectral Path Tracer</h3>
-          <p class="desc">Developed a physically based spectral path tracer simulating thin-film interference to reproduce the iridescent appearance of soap bubbles and oil films. Extended a Monte Carlo global illumination framework to sample light transport across the visible spectrum with wavelength-dependent reflectance and dispersion. Implemented a custom thin-film BSDF model accounting for phase shift and film thickness, combined with triplanar Perlin noise to generate realistic interference patterns and surface variation.</p>
+          <p class="desc">Built with a team of four: a high-performance C++ path tracer with global illumination and a flexible, physics-based material system (dielectrics and thin films). Engineered variance reduction via adaptive sampling based on statistical variance and direct light importance sampling (next-event estimation). Developed a photorealistic camera model with depth of field, and implemented a custom spectral thin-film BSDF using procedural Perlin noise to emulate chaotic film thickness and reproduce the iridescent appearance of soap bubbles and oil films.</p>
           <p class="note">Private repository — access on request.</p>
           <div class="links">
             <a class="link-btn" href="https://andvvo.github.io/" target="_blank" rel="noopener">View final report
@@ -313,15 +314,70 @@
   <!-- ============ 02 SYSTEMS ============ -->
   <section id="systems">
     <div class="sec-head reveal">
-      <span class="sec-num">02</span><h2>Systems &amp; Languages</h2><span class="sec-rule"></span><span class="sec-count">3 projects</span>
+      <span class="sec-num">02</span><h2>Systems &amp; Languages</h2><span class="sec-rule"></span><span class="sec-count">5 projects</span>
     </div>
     <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><svg class="ph" viewBox="0 0 800 500" role="img" aria-label="Abstract visualization for custom CUDA machine learning kernels">
+          <defs>
+            <linearGradient id="g-cuda" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8b7cf6"/><stop offset="1" stop-color="#4fd1c5"/>
+            </linearGradient>
+            <pattern id="p-cuda" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M80 0H0V80" fill="none" stroke="rgba(255,255,255,.045)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="500" fill="#0b0f18"/>
+          <rect width="800" height="500" fill="url(#p-cuda)"/>
+          <g fill="url(#g-cuda)">
+            <rect x="216" y="130" width="52" height="52" rx="8" opacity=".95"/><rect x="292" y="130" width="52" height="52" rx="8" opacity=".7"/><rect x="368" y="130" width="52" height="52" rx="8" opacity=".85"/><rect x="444" y="130" width="52" height="52" rx="8" opacity=".55"/><rect x="520" y="130" width="52" height="52" rx="8" opacity=".9"/>
+            <rect x="216" y="206" width="52" height="52" rx="8" opacity=".6"/><rect x="292" y="206" width="52" height="52" rx="8" opacity=".95"/><rect x="368" y="206" width="52" height="52" rx="8" opacity=".75"/><rect x="444" y="206" width="52" height="52" rx="8" opacity=".95"/><rect x="520" y="206" width="52" height="52" rx="8" opacity=".5"/>
+            <rect x="216" y="282" width="52" height="52" rx="8" opacity=".8"/><rect x="292" y="282" width="52" height="52" rx="8" opacity=".55"/><rect x="368" y="282" width="52" height="52" rx="8" opacity=".95"/><rect x="444" y="282" width="52" height="52" rx="8" opacity=".7"/><rect x="520" y="282" width="52" height="52" rx="8" opacity=".9"/>
+          </g>
+          <rect x="176" y="86" width="448" height="328" rx="18" fill="none" stroke="rgba(139,124,246,.5)" stroke-width="3"/>
+          <g stroke="rgba(79,209,197,.55)" stroke-width="4" stroke-linecap="round">
+            <line x1="240" y1="86" x2="240" y2="58"/><line x1="320" y1="86" x2="320" y2="58"/><line x1="400" y1="86" x2="400" y2="58"/><line x1="480" y1="86" x2="480" y2="58"/><line x1="560" y1="86" x2="560" y2="58"/>
+            <line x1="240" y1="414" x2="240" y2="442"/><line x1="320" y1="414" x2="320" y2="442"/><line x1="400" y1="414" x2="400" y2="442"/><line x1="480" y1="414" x2="480" y2="442"/><line x1="560" y1="414" x2="560" y2="442"/>
+          </g>
+        </svg></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">CUDA</span><span class="tag alt">HPC · 2025</span></div>
+          <h3>Custom ML Kernels</h3>
+          <p class="desc">Implemented highly optimized Depthwise 2D Convolution and BatchNorm kernels. Utilized warp shuffling, cooperative shared buffer loading, tiling, templated variables, and operator fusion to achieve a 50%+ speed-up. Benchmarked and profiled kernel performance with Nsight Compute (NCU) to resolve compute bottlenecks.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><svg class="ph" viewBox="0 0 800 500" role="img" aria-label="Abstract visualization for gem5 microarchitecture optimization">
+          <defs>
+            <linearGradient id="g-gem5" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8b7cf6"/><stop offset="1" stop-color="#4fd1c5"/>
+            </linearGradient>
+            <pattern id="p-gem5" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M80 0H0V80" fill="none" stroke="rgba(255,255,255,.045)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="500" fill="#0b0f18"/>
+          <rect width="800" height="500" fill="url(#p-gem5)"/>
+          <line x1="90" y1="60" x2="90" y2="420" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+          <line x1="90" y1="420" x2="730" y2="420" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+          <path d="M110 130 L230 150 L350 210 L470 250 L590 320 L710 340" fill="none" stroke="url(#g-gem5)" stroke-width="6" stroke-linecap="round"/>
+          <g fill="#4fd1c5">
+            <circle cx="110" cy="130" r="9"/><circle cx="230" cy="150" r="9"/><circle cx="350" cy="210" r="9"/><circle cx="470" cy="250" r="9"/><circle cx="590" cy="320" r="9"/><circle cx="710" cy="340" r="9"/>
+          </g>
+          <text x="560" y="292" fill="#9aa4b5" font-family="Inter,sans-serif" font-size="30" font-weight="600">−33% power</text>
+        </svg></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">gem5</span><span class="tag alt">Microarchitecture · 2025</span></div>
+          <h3>gem5 Microarchitecture Optimization</h3>
+          <p class="desc">Optimized gem5 microarchitecture using Genetic Algorithms and Bayesian Optimization, reducing tc workload power usage by 33% at stable throughput.</p>
+        </div>
+      </article>
       <article class="card reveal">
         <div class="thumb"><img src="https://sigmundr6.github.io/images/riscv_pipeline.png" alt="Conceptual 5-stage RISC-V pipeline diagram" loading="lazy"></div>
         <div class="card-body">
           <div class="tags"><span class="tag">Logisim</span><span class="tag alt">RISC-V · RV32I+M</span></div>
           <h3>Pipelined RISC-V CPU</h3>
-          <p class="desc">Implemented a fully functional 5-stage pipelined RISC-V processor (RV32I + M) featuring IF/ID/EX/MEM/WB stages. Designed and verified hazard detection and forwarding, with precise pipeline-register synchronization. Integrated a ROM-based control unit, immediate generator, and ALU for arithmetic, branch, and multiply instructions; validated with extensive test programs.</p>
+          <p class="desc">Implemented a fully functional 5-stage pipelined RISC-V processor (RV32I + M) featuring IF/ID/EX/MEM/WB stages. Built the RegFile, ALU, immediate generator, and control logic at the architecture level, and engineered the multi-stage pipeline for higher clock speeds and instruction throughput. Designed and verified hazard detection and forwarding, with precise pipeline-register synchronization; validated with extensive test programs covering all RV32I instructions and multiplication.</p>
           <p class="note">Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</p>
         </div>
       </article>
@@ -349,9 +405,53 @@
   <!-- ============ 03 AI / DATA ============ -->
   <section id="ai">
     <div class="sec-head reveal">
-      <span class="sec-num">03</span><h2>AI / Data</h2><span class="sec-rule"></span><span class="sec-count">2 projects</span>
+      <span class="sec-num">03</span><h2>AI / Data</h2><span class="sec-rule"></span><span class="sec-count">4 projects</span>
     </div>
     <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><svg class="ph" viewBox="0 0 800 500" role="img" aria-label="Abstract visualization for the acute kidney injury detection system">
+          <defs>
+            <linearGradient id="g-aki" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8b7cf6"/><stop offset="1" stop-color="#4fd1c5"/>
+            </linearGradient>
+            <pattern id="p-aki" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M80 0H0V80" fill="none" stroke="rgba(255,255,255,.045)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="500" fill="#0b0f18"/>
+          <rect width="800" height="500" fill="url(#p-aki)"/>
+          <path d="M-20 300 H180 l45 -80 l45 160 l45 -120 l45 40 H420 l45 -80 l45 160 l45 -120 l45 40 H820" fill="none" stroke="url(#g-aki)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="700" cy="300" r="11" fill="#4fd1c5"/>
+          <circle cx="700" cy="300" r="22" fill="none" stroke="#4fd1c5" stroke-width="2" opacity=".4"/>
+        </svg></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">Python</span><span class="tag alt">ML Systems · 2026</span></div>
+          <h3>Acute Kidney Injury Detection System</h3>
+          <p class="desc">Deployed a real-time Azure/Kubernetes CI/CD microservice processing HL7 data streams at &lt;1s latency. Engineered a logistic regression ML pipeline achieving a &gt;0.99 F3 score for high-recall clinical risk detection. Ensured production reliability through extensive unit, integration, and fuzz testing against malformed inputs, with SQLite, Prometheus, and Grafana for observability.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><svg class="ph" viewBox="0 0 800 500" role="img" aria-label="Abstract visualization for the diffusion-based audio processing pipeline">
+          <defs>
+            <linearGradient id="g-cfm" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4fd1c5"/><stop offset="1" stop-color="#8b7cf6"/>
+            </linearGradient>
+            <pattern id="p-cfm" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M80 0H0V80" fill="none" stroke="rgba(255,255,255,.045)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="500" fill="#0b0f18"/>
+          <rect width="800" height="500" fill="url(#p-cfm)"/>
+          <g fill="url(#g-cfm)">
+            <rect x="36" y="215" width="15" height="70" rx="7"/><rect x="65" y="195" width="15" height="110" rx="7"/><rect x="94" y="165" width="15" height="170" rx="7"/><rect x="123" y="185" width="15" height="130" rx="7"/><rect x="152" y="145" width="15" height="210" rx="7"/><rect x="181" y="120" width="15" height="260" rx="7"/><rect x="210" y="160" width="15" height="180" rx="7"/><rect x="239" y="180" width="15" height="140" rx="7"/><rect x="268" y="135" width="15" height="230" rx="7"/><rect x="297" y="100" width="15" height="300" rx="7"/><rect x="326" y="145" width="15" height="210" rx="7"/><rect x="355" y="175" width="15" height="150" rx="7"/><rect x="384" y="125" width="15" height="250" rx="7"/><rect x="413" y="90" width="15" height="320" rx="7"/><rect x="442" y="120" width="15" height="260" rx="7"/><rect x="471" y="160" width="15" height="180" rx="7"/><rect x="500" y="185" width="15" height="130" rx="7"/><rect x="529" y="145" width="15" height="210" rx="7"/><rect x="558" y="110" width="15" height="280" rx="7"/><rect x="587" y="135" width="15" height="230" rx="7"/><rect x="616" y="170" width="15" height="160" rx="7"/><rect x="645" y="190" width="15" height="120" rx="7"/><rect x="674" y="155" width="15" height="190" rx="7"/><rect x="703" y="125" width="15" height="250" rx="7"/><rect x="732" y="165" width="15" height="170" rx="7"/><rect x="761" y="200" width="15" height="100" rx="7"/>
+          </g>
+        </svg></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag alt">Diffusion Audio · 2026</span></div>
+          <h3>CFM-SVC: Diffusion-Based Audio Processing Pipeline</h3>
+          <p class="desc">Engineered a stable AI audio generation pipeline for singing voice conversion, replacing GANs with Conditional Flow Matching (CFM) and a Diffusion Transformer (DiT). Architected a modular ML training workflow using LoRA, Whisper, and HuBERT, enabling rapid voice personalisation via lightweight checkpoints. Optimized inference with log-mel and Vocos, cutting trainable parameters by 89% to 5.97M.</p>
+        </div>
+      </article>
       <article class="card reveal">
         <div class="thumb"><img src="https://sigmundr6.github.io/images/MNIST.png" alt="MNIST digits dataset" loading="lazy"></div>
         <div class="card-body">
@@ -384,7 +484,7 @@
         <div class="card-body">
           <div class="tags"><span class="tag">Java</span><span class="tag alt">Procedural Generation</span></div>
           <h3>Procedural Dungeon Crawler</h3>
-          <p class="desc">Engineered a high-performance generator using density maps and a BSP tree to produce GiB-scale dungeons in seconds. Built a class-based combat system with enemy AI and leveling; integrated an adaptive HUD, and a multi-slot save + full replay system for complete state persistence.</p>
+          <p class="desc">Managed the full Git-based SDLC for a standalone Java application, applying OOD principles to separate logic, UI, and data layers. Engineered a high-performance procedural generator using density maps and a BSP tree to produce GiB-scale dungeons in seconds. Built a modal, turn-based combat system with polymorphic enemy AI, leveling, and an elemental affinity model; integrated an adaptive real-time HUD and a deterministic save/replay system via input logging for complete state persistence.</p>
           <p class="note">Private repository — access on request.</p>
         </div>
       </article>
@@ -411,7 +511,7 @@
         <div class="card-body">
           <div class="tags"><span class="tag alt">Cryptography · ML</span></div>
           <h3>Studying S-Boxes and the Feistel Network in DES with the Multilayer Perceptron Model</h3>
-          <p class="desc">Conducted a linear cryptanalysis of the Data Encryption Standard (DES) using a multilayer perceptron (MLP) model trained on plaintext–ciphertext pairs. Implemented Python and Mathematica experiments to analyze how neural networks approximate S-box mappings and how imperfect S-box designs can be exploited. Explored the correlation between training accuracy and the number of Feistel rounds, demonstrating how learning behavior reveals structural patterns in block ciphers.</p>
+          <p class="desc">Conducted a linear cryptanalysis of the Data Encryption Standard (DES) using a multilayer perceptron (MLP) model trained on plaintext–ciphertext pairs, validating DES S-box semantic security and demonstrating resistance to chosen-plaintext attacks despite 100% training convergence. Implemented Python and Mathematica experiments to analyze how neural networks approximate S-box mappings and how imperfect S-box designs can be exploited; visualized how increased Feistel rounds degrade ML accuracy, showing how learning behavior reveals structural patterns in block ciphers.</p>
           <p class="note">University of Waterloo — supervised by Prof. Gautam Kamath. Code and implementation details available upon request.</p>
           <div class="links">
             <a class="link-btn" href="https://sigmundr6.github.io/MLP_DES.pdf" target="_blank" rel="noopener">Read paper
