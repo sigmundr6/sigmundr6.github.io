@@ -427,7 +427,7 @@
         <div class="card-body">
           <div class="tags"><span class="tag">Python</span><span class="tag alt">ML Systems · 2026</span></div>
           <h3>Acute Kidney Injury Detection System</h3>
-          <p class="desc">Deployed a real-time Azure/Kubernetes CI/CD microservice processing HL7 data streams at &lt;1s latency. Engineered a logistic regression ML pipeline achieving a &gt;0.99 F3 score for high-recall clinical risk detection. Ensured production reliability through extensive unit, integration, and fuzz testing against malformed inputs, with SQLite, Prometheus, and Grafana for observability.</p>
+          <p class="desc">Deployed a real-time Azure/Kubernetes CI/CD microservice ingesting HL7 data streams at &lt;1s latency for high-recall clinical risk detection. Engineered creatinine-based feature pipelines — rolling statistics, 7/365-day exponential moving averages, demographics — over ~7.4k patient records, benchmarking logistic regression against Random Forest and XGBoost: logistic regression won with a 0.9937 F3 score and 0.9999 ROC-AUC, validated against the NHS AKI detection rule. Ensured production reliability through unit, integration, and fuzz testing against malformed inputs, with SQLite, Prometheus, and Grafana observability; the model ships as a Dockerized inference service.</p>
         </div>
       </article>
       <article class="card reveal">
@@ -449,7 +449,7 @@
         <div class="card-body">
           <div class="tags"><span class="tag">PyTorch</span><span class="tag alt">Diffusion Audio · 2026</span></div>
           <h3>CFM-SVC: Diffusion-Based Audio Processing Pipeline</h3>
-          <p class="desc">Engineered a stable AI audio generation pipeline for singing voice conversion, replacing GANs with Conditional Flow Matching (CFM) and a Diffusion Transformer (DiT). Architected a modular ML training workflow using LoRA, Whisper, and HuBERT, enabling rapid voice personalisation via lightweight checkpoints. Optimized inference with log-mel and Vocos, cutting trainable parameters by 89% to 5.97M.</p>
+          <p class="desc">Built two flow-matching singing voice conversion systems. V1 trains a Diffusion Transformer from scratch on 1024-dim DAC codec latents (~82M params); V2 adapts a frozen pretrained F5-TTS with rank-16 LoRA injected into every attention projection plus a conditioning adapter, cutting trainable parameters 89% to ~5M. Conditioning fuses Whisper PPG, HuBERT embeddings, CREPE pitch tracks, and speaker d-vectors; a two-stage protocol first trains on multi-speaker singing, then fine-tunes only the speaker projection on the target's speech clips — no singing required. Inference runs Euler ODE sampling through a frozen Vocos vocoder, with a Gradio demo and SLURM training scripts.</p>
         </div>
       </article>
       <article class="card reveal">
