@@ -1,327 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hongyu (Hector) Li — Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hongyu (Hector) Li — Portfolio</title>
+<meta name="description" content="Portfolio of Hongyu (Hector) Li — Computing (AI & ML) at Imperial College London. Systems, graphics, and machine learning projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c11;
+    --bg-soft:#0e1118;
+    --card:#12161f;
+    --card-2:#161b26;
+    --border:rgba(255,255,255,.08);
+    --border-strong:rgba(255,255,255,.14);
+    --text:#eceff5;
+    --muted:#9aa4b5;
+    --faint:#6b7484;
+    --accent:#8b7cf6;
+    --accent-2:#4fd1c5;
+    --accent-soft:rgba(139,124,246,.14);
+    --radius:18px;
+    --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --font-display:'Space Grotesk','Inter',system-ui,sans-serif;
+    --max:1140px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:88px}
+  body{
+    font-family:var(--font-body);
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(900px 480px at 12% -4%, rgba(139,124,246,.13), transparent 60%),
+      radial-gradient(760px 420px at 88% 8%, rgba(79,209,197,.09), transparent 60%),
+      radial-gradient(1000px 700px at 50% 110%, rgba(139,124,246,.06), transparent 60%);
+  }
+  ::selection{background:rgba(139,124,246,.35)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
 
-<nav class="topnav">
-    <a href="#about">About</a>
-  <a href="#graphics">Graphics</a>
-  <a href="#systems">Systems & Languages</a>
-  <a href="#ai-data">AI / Data</a>
-  <a href="#games">Games & Interactive</a>
-  <a href="#research">Research</a>
-  <a href="#beyond">Beyond Technology</a>
+  /* ---------- progress bar ---------- */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+
+  /* ---------- nav ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:rgba(10,12,17,.62);border-bottom:1px solid transparent;
+    transition:border-color .3s, background .3s;}
+  nav.scrolled{border-bottom-color:var(--border);background:rgba(10,12,17,.85)}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:0 28px;height:68px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-family:var(--font-display);font-weight:700;font-size:1.05rem;
+    letter-spacing:.01em;text-decoration:none;display:flex;align-items:center;gap:10px}
+  .brand-mark{width:30px;height:30px;border-radius:9px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;font-size:.8rem;font-weight:700;color:#0a0c11}
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.88rem;font-weight:500;color:var(--muted);
+    padding:8px 13px;border-radius:10px;transition:color .2s,background .2s;white-space:nowrap}
+  .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+  .nav-links a.active{color:var(--text);background:var(--accent-soft)}
+  .nav-cta{font-size:.85rem;font-weight:600;text-decoration:none;
+    border:1px solid var(--border-strong);padding:8px 16px;border-radius:999px;
+    transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:7px}
+  .nav-cta:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .nav-cta svg{width:15px;height:15px}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  header{max-width:var(--max);margin:0 auto;padding:150px 28px 70px;
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--border);border-radius:999px;padding:7px 15px;margin-bottom:26px;
+    background:rgba(255,255,255,.02)}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    box-shadow:0 0 12px rgba(139,124,246,.8)}
+  h1{font-family:var(--font-display);font-weight:700;line-height:1.06;letter-spacing:-.02em;
+    font-size:clamp(2.6rem,5.4vw,4.3rem);margin-bottom:14px}
+  h1 .grad{background:linear-gradient(100deg,var(--accent) 10%,var(--accent-2) 90%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{font-family:var(--font-display);font-size:clamp(1.02rem,2vw,1.25rem);
+    color:var(--muted);font-weight:500;margin-bottom:22px}
+  .bio{color:var(--muted);font-size:1.0rem;max-width:34rem}
+  .bio p+p{margin-top:14px}
+  .bio strong{color:var(--text);font-weight:600}
+  .hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;
+    font-size:.94rem;padding:13px 24px;border-radius:999px;transition:transform .18s,box-shadow .18s,background .2s}
+  .btn-primary{background:linear-gradient(100deg,var(--accent),#6f9df6);color:#0b0d12;
+    box-shadow:0 8px 28px rgba(139,124,246,.32)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(139,124,246,.42)}
+  .btn-ghost{border:1px solid var(--border-strong);color:var(--text)}
+  .btn-ghost:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px}
+  .hero-visual{position:relative}
+  .hero-frame{border-radius:22px;overflow:hidden;border:1px solid var(--border-strong);
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 60px rgba(139,124,246,.12);
+    position:relative;background:var(--card)}
+  .hero-frame img{width:100%;aspect-ratio:1/1;object-fit:cover}
+  .hero-caption{position:absolute;left:16px;bottom:16px;right:16px;
+    background:rgba(10,12,17,.72);backdrop-filter:blur(10px);
+    border:1px solid var(--border);border-radius:12px;padding:11px 15px;font-size:.82rem;color:var(--muted)}
+  .hero-caption strong{color:var(--text);font-weight:600;display:block;font-size:.86rem}
+  .hero-visual::before{content:"";position:absolute;inset:-24px;z-index:-1;border-radius:30px;
+    background:radial-gradient(closest-side,rgba(139,124,246,.22),transparent 70%);filter:blur(10px)}
+  @media(max-width:960px){header{grid-template-columns:1fr;padding-top:120px}.hero-visual{max-width:520px}}
+
+  /* ---------- tech strip ---------- */
+  .strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    background:rgba(255,255,255,.012);overflow:hidden;white-space:nowrap;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .strip-track{display:inline-flex;gap:44px;padding:15px 22px;animation:scroll 30s linear infinite;
+    font-family:var(--font-display);font-size:.86rem;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--faint)}
+  .strip-track span{display:inline-flex;align-items:center;gap:44px}
+  .strip-track i{font-style:normal;color:var(--accent);font-size:.7rem}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.strip-track{animation:none}}
+
+  /* ---------- sections ---------- */
+  main{max-width:var(--max);margin:0 auto;padding:0 28px}
+  section{padding:84px 0 8px}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:36px}
+  .sec-num{font-family:var(--font-display);font-size:.85rem;font-weight:700;letter-spacing:.1em;
+    background:linear-gradient(100deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+  .sec-head h2{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.1rem);
+    font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+  .sec-rule{flex:1;height:1px;background:linear-gradient(90deg,var(--border-strong),transparent);align-self:center}
+  .sec-count{font-size:.82rem;color:var(--faint);white-space:nowrap}
+
+  /* ---------- cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--card-2),var(--card));
+    border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+  .card:hover{transform:translateY(-5px);border-color:var(--border-strong);
+    box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  .card.featured{grid-column:1/-1;display:grid;grid-template-columns:1.15fr 1fr}
+  @media(max-width:860px){.card.featured{grid-template-columns:1fr}}
+  .thumb{position:relative;overflow:hidden;background:#05070b;flex:none}
+  .thumb img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;
+    transition:transform .5s ease;filter:saturate(1.02)}
+  .card.featured .thumb img{aspect-ratio:auto;min-height:100%}
+  .card:hover .thumb img{transform:scale(1.045)}
+  .thumb::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,transparent 62%,rgba(5,7,11,.5))}
+  .card-body{padding:24px 24px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent-2);background:rgba(79,209,197,.09);
+    border:1px solid rgba(79,209,197,.22);padding:4px 11px;border-radius:999px}
+  .tag.alt{color:#c9bdfc;background:var(--accent-soft);border-color:rgba(139,124,246,.28)}
+  .card h3{font-family:var(--font-display);font-size:1.22rem;font-weight:700;
+    letter-spacing:-.01em;line-height:1.3}
+  .card.featured h3{font-size:1.5rem}
+  .card p.desc{color:var(--muted);font-size:.94rem}
+  .card p.note{font-size:.83rem;color:var(--faint);font-style:italic;margin-top:auto;padding-top:4px}
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .link-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-size:.85rem;font-weight:600;color:var(--text);
+    border:1px solid var(--border-strong);border-radius:999px;padding:9px 17px;
+    transition:background .2s,border-color .2s,transform .18s}
+  .link-btn:hover{background:var(--accent-soft);border-color:var(--accent);transform:translateY(-1px)}
+  .link-btn svg{width:14px;height:14px}
+  .ext{font-size:.78rem;color:var(--faint);font-weight:500}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--border);margin-top:96px}
+  .foot-inner{max-width:var(--max);margin:0 auto;padding:38px 28px;display:flex;
+    justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    color:var(--faint);font-size:.85rem}
+  .foot-inner a{color:var(--muted);text-decoration:none}
+  .foot-inner a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="brand-mark">HL</span>Hongyu&nbsp;Li</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#graphics">Graphics</a>
+      <a href="#systems">Systems</a>
+      <a href="#ai">AI&nbsp;/&nbsp;Data</a>
+      <a href="#games">Games</a>
+      <a href="#research">Research</a>
+      <a href="#beyond">Beyond&nbsp;Tech</a>
+    </div>
+    <a class="nav-cta" href="https://github.com/sigmundr6" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
 </nav>
 
-<body>
-  <header>
-    <h1>Hongyu (Hector) Li</h1>
-    <p>MSc Computing (AI/ML), Imperial College London</p>
-    <p><a href="mailto:jcsylhy@gmail.com">jcsylhy@gmail.com</a> | <a href="https://github.com/sigmundr6">GitHub</a></p>
-  </header>
+<header id="top">
+  <div>
+    <span class="eyebrow"><span class="dot"></span>Portfolio</span>
+    <h1>Hongyu <span class="grad">(Hector)</span> Li</h1>
+    <p class="role">Graduate student in Computing (Artificial Intelligence &amp; Machine Learning), Imperial College London</p>
+    <div class="bio">
+      <p>Building on a strong foundation in <strong>mathematics and optimization</strong> from the University of Waterloo and Cornell University, my passion lies in understanding and building complex systems from first principles.</p>
+      <p>I enjoy challenges where theoretical ideas meet implementation — where algorithms transform into real, efficient systems. Across my projects I have designed and implemented systems ranging from a <strong>pipelined RISC-V CPU</strong> and a <strong>Scheme interpreter</strong> to <strong>physically based path tracers</strong> in C++, and my technical write-ups reflect a commitment to rigorous analysis and clear communication.</p>
+      <p>I am now applying this systems-level and mathematical rigor to challenges in AI, and I am <strong>seeking opportunities at the intersection of high-performance systems and machine learning</strong>.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#graphics">Explore projects
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10m0 0l-4-4m4 4l4-4"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#research">Research &amp; writing</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-frame">
+      <img src="https://sigmundr6.github.io/images/bubble.gif" alt="Spectral path tracer rendering of a soap bubble showing thin-film interference">
+      <div class="hero-caption"><strong>Spectral Path Tracer</strong>Independent project — thin-film interference, rendered wavelength by wavelength</div>
+    </div>
+  </div>
+</header>
 
-  <section id="about" class="about">
-  <p>I am a graduate student in Computing (Artificial Intelligence and Machine Learning) at Imperial College London, building on a strong foundation in mathematics and optimization from the University of Waterloo and Cornell University.</p>
+<div class="strip" aria-hidden="true">
+  <div class="strip-track" id="stripTrack">
+    <span>C++ <i>◆</i> Python <i>◆</i> Java <i>◆</i> C <i>◆</i> RISC-V Assembly <i>◆</i> Logisim <i>◆</i> Scheme <i>◆</i> Mathematica <i>◆</i>&nbsp;</span>
+  </div>
+</div>
 
-  <p>My passion lies in understanding and building complex systems from first principles. I enjoy challenges where theoretical ideas meet implementation, where algorithms transform into real, efficient systems. Across my projects, I have designed and implemented systems ranging from a pipelined RISC-V CPU and a Scheme interpreter to physically based path tracers in C++. My technical write-ups reflect a commitment to rigorous analysis and clear communication.</p>
-
-  <p>I am now applying this systems-level and mathematical rigor to challenges in AI, and I am seeking opportunities at the intersection of high-performance systems and machine learning.</p>
-</section>
-
+<main>
+  <!-- ============ 01 GRAPHICS ============ -->
   <section id="graphics">
-    <h2>Computer Graphics</h2>
-    <div class="projects">
-
-      <div class="card">
-        <img src="images/rasterizer.png" alt="Rasterizer">
-        <div class="card-content">
-          <h3>Rasterizer (CS184 Assignment 1, C++)</h3>
-          <p>Implemented a full rasterization pipeline including triangle rasterization, supersampling, barycentric interpolation, 
-            and mipmapping. Optimized bounding box rendering and analyzed floating-point precision issues. Implemented advanced 
-            sampling techniques such as jittered sampling and anisotropic sampling for high-quality anti-aliasing and texture filtering.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-          <a href="CS_184_Assignment_1.pdf">Read Technical Report →</a>
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span><h2>Computer Graphics</h2><span class="sec-rule"></span><span class="sec-count">4 projects</span>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/rasterizer.png" alt="Rasterizer rendering" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">C++</span><span class="tag alt">CS184 · Assignment 1</span></div>
+          <h3>Rasterizer</h3>
+          <p class="desc">Implemented a full rasterization pipeline including triangle rasterization, supersampling, barycentric interpolation, and mipmapping. Optimized bounding box rendering and analyzed floating-point precision issues. Implemented advanced sampling techniques such as jittered sampling and anisotropic sampling for high-quality anti-aliasing and texture filtering.</p>
+          <p class="note">Private repository — access on request.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/CS_184_Assignment_1.pdf" target="_blank" rel="noopener">Read technical report
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
         </div>
-      </div>
-
-      <div class="card">
-        <img src="images/meshmodel.png" alt="Mesh Modelling">
-        <div class="card-content">
-          <h3>Mesh Modelling (CS184 Assignment 2, C++)</h3>
-          <p>Constructed and manipulated triangle meshes using a half-edge data structure. Implemented edge flips, 
-            splits, and vertex smoothing with loop subdivision for smooth surface refinement capable of handling 
-            boundaries and maintaining manifold consistency.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-          <a href="CS_184_Assignment_2.pdf">Read Technical Report →</a>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/meshmodel.png" alt="Mesh modelling with loop subdivision" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">C++</span><span class="tag alt">CS184 · Assignment 2</span></div>
+          <h3>Mesh Modelling</h3>
+          <p class="desc">Constructed and manipulated triangle meshes using a half-edge data structure. Implemented edge flips, splits, and vertex smoothing with loop subdivision for smooth surface refinement capable of handling boundaries and maintaining manifold consistency.</p>
+          <p class="note">Private repository — access on request.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/CS_184_Assignment_2.pdf" target="_blank" rel="noopener">Read technical report
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
         </div>
-      </div>
-
-        <div class="card">
-        <img src="images/pathtracer_basic.png" alt="Basic Path Tracer Rendering">
-        <div class="card-content">
-            <h3>Basic Path Tracer (CS184 Assignment 3, C++)</h3>
-            <p>Implemented a physically based Monte Carlo path tracer as the baseline rendering engine, supporting soft
-            shadows, global illumination, and diffuse and microfacet BSDFs. Integrated a bounding volume hierarchy (BVH)
-            for efficient ray–scene intersection and applied multiple importance sampling to improve convergence and
-            noise reduction in complex lighting environments.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-            <a href="CS_184_Assignment_3.pdf">Read Technical Report →</a>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/pathtracer_basic.png" alt="Basic path tracer rendering with global illumination" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">C++</span><span class="tag alt">CS184 · Assignment 3</span></div>
+          <h3>Basic Path Tracer</h3>
+          <p class="desc">Implemented a physically based Monte Carlo path tracer as the baseline rendering engine, supporting soft shadows, global illumination, and diffuse and microfacet BSDFs. Integrated a bounding volume hierarchy (BVH) for efficient ray–scene intersection and applied multiple importance sampling to improve convergence and noise reduction in complex lighting environments.</p>
+          <p class="note">Private repository — access on request.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/CS_184_Assignment_3.pdf" target="_blank" rel="noopener">Read technical report
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
         </div>
+      </article>
+      <article class="card featured reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/bubble.gif" alt="Spectral path tracer rendering of iridescent soap bubbles" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">C++</span><span class="tag alt">Independent project</span></div>
+          <h3>Spectral Path Tracer</h3>
+          <p class="desc">Developed a physically based spectral path tracer simulating thin-film interference to reproduce the iridescent appearance of soap bubbles and oil films. Extended a Monte Carlo global illumination framework to sample light transport across the visible spectrum with wavelength-dependent reflectance and dispersion. Implemented a custom thin-film BSDF model accounting for phase shift and film thickness, combined with triplanar Perlin noise to generate realistic interference patterns and surface variation.</p>
+          <p class="note">Private repository — access on request.</p>
+          <div class="links">
+            <a class="link-btn" href="https://andvvo.github.io/" target="_blank" rel="noopener">View final report
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7.5 8.5"/></svg></a>
+            <span class="ext">hosted externally</span>
+          </div>
         </div>
-
-        <div class="card">
-        <img src="images/bubble.gif" alt="Spectral Path Tracer Rendering">
-        <div class="card-content">
-            <h3>Spectral Path Tracer (Independent Project, C++)</h3>
-            <p>Developed a physically based spectral path tracer simulating thin-film interference to reproduce the
-            iridescent appearance of soap bubbles and oil films. Extended a Monte Carlo global illumination framework
-            to sample light transport across the visible spectrum with wavelength-dependent reflectance and dispersion.
-            Implemented a custom thin-film BSDF model accounting for phase shift and film thickness, combined with
-            triplanar Perlin noise to generate realistic interference patterns and surface variation.</p>
-            <p><em>Private Repository — Access on Request.</em></p>
-            <a href="https://andvvo.github.io/bubbletracing/final-report/">View Final Report →</a>
-        </div>
-        </div>
-
+      </article>
     </div>
   </section>
 
-  <!-- Systems & Languages -->
-<section id="systems">
-  <h2>Systems & Languages</h2>
-  <div class="projects">
-
-    <div class="card">
-      <img src="images/riscv_pipeline.png" alt="Conceptual 5-Stage Pipeline Diagram">
-      <div class="card-content">
-        <h3>Pipelined RISC-V CPU (Logisim)</h3>
-        <p>Implemented a fully functional 5-stage pipelined RISC-V processor (RV32I + M) featuring IF/ID/EX/MEM/WB
-           stages. Designed and verified hazard detection and forwarding, with precise pipeline-register
-           synchronization. Integrated a ROM-based control unit, immediate generator, and ALU for arithmetic,
-           branch, and multiply instructions; validated with extensive test programs.</p>
-        <p><em>Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</em></p>
-      </div>
+  <!-- ============ 02 SYSTEMS ============ -->
+  <section id="systems">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span><h2>Systems &amp; Languages</h2><span class="sec-rule"></span><span class="sec-count">3 projects</span>
     </div>
-
-    <div class="card">
-      <img src="images/scm.png" alt="Scheme Interpreter REPL Screenshot">
-      <div class="card-content">
-        <h3>Scheme Interpreter (Python)</h3>
-        <p>Implemented a custom Scheme interpreter supporting lexical and dynamic scoping, higher-order functions,
-           and tail-recursion optimization. Built a recursive-descent parser and an environment model for closures
-           and nested calls.</p>
-        <p><em>Private Repository — Access on Request.</em></p>
-      </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/riscv_pipeline.png" alt="Conceptual 5-stage RISC-V pipeline diagram" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">Logisim</span><span class="tag alt">RISC-V · RV32I+M</span></div>
+          <h3>Pipelined RISC-V CPU</h3>
+          <p class="desc">Implemented a fully functional 5-stage pipelined RISC-V processor (RV32I + M) featuring IF/ID/EX/MEM/WB stages. Designed and verified hazard detection and forwarding, with precise pipeline-register synchronization. Integrated a ROM-based control unit, immediate generator, and ALU for arithmetic, branch, and multiply instructions; validated with extensive test programs.</p>
+          <p class="note">Concept diagram shown (source: UC Berkeley CS 61C). Actual Logisim design available upon request.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/scm.png" alt="Scheme interpreter REPL screenshot" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">Python</span><span class="tag alt">Interpreters</span></div>
+          <h3>Scheme Interpreter</h3>
+          <p class="desc">Implemented a custom Scheme interpreter supporting lexical and dynamic scoping, higher-order functions, and tail-recursion optimization. Built a recursive-descent parser and an environment model for closures and nested calls.</p>
+          <p class="note">Private repository — access on request.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/snake.png" alt="Terminal Snake game screenshot" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">C</span><span class="tag alt">Terminal</span></div>
+          <h3>Terminal Snake</h3>
+          <p class="desc">Built a terminal-rendered Snake in pure C with real-time input, dynamic memory management, and a fixed-step loop for collision and state updates. Wrote a parser to load board states (including irregular walls) from text files for configurable levels.</p>
+          <p class="note">Private repository — access on request.</p>
+        </div>
+      </article>
     </div>
+  </section>
 
-    <div class="card">
-      <img src="images/snake.png" alt="Terminal Snake Game Screenshot">
-      <div class="card-content">
-        <h3>Terminal Snake (C)</h3>
-        <p>Built a terminal-rendered Snake in pure C with real-time input, dynamic memory management, and a fixed-step
-           loop for collision and state updates. Wrote a parser to load board states (including irregular walls) from
-           text files for configurable levels.</p>
-        <p><em>Private Repository — Access on Request.</em></p>
-      </div>
+  <!-- ============ 03 AI / DATA ============ -->
+  <section id="ai">
+    <div class="sec-head reveal">
+      <span class="sec-num">03</span><h2>AI / Data</h2><span class="sec-rule"></span><span class="sec-count">2 projects</span>
     </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/MNIST.png" alt="MNIST digits dataset" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">RISC-V Assembly</span><span class="tag alt">Machine Learning</span></div>
+          <h3>Image Classifier in RISC-V Assembly</h3>
+          <p class="desc">Implemented a multilayer perceptron entirely in RISC-V assembly to classify MNIST digits. Manually managed memory layout, matrix ops, and activation computations, demonstrating efficient arithmetic and control flow on a custom ISA.</p>
+          <p class="note">Private repository — access on request.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/wordnet.png" alt="WordNet visualizer screenshot" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">Java</span><span class="tag alt">Graphs · Visualization</span></div>
+          <h3>WordNet Visualizer</h3>
+          <p class="desc">Parsed large synonym–hyponym CSV datasets (400 MiB+) and constructed directed word graphs with efficient BFS traversal and pruning. Generated interactive HTML visualizations for exploring lexical relationships.</p>
+          <p class="note">Private repository — access on request.</p>
+        </div>
+      </article>
+    </div>
+  </section>
 
+  <!-- ============ 04 GAMES ============ -->
+  <section id="games">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span><h2>Games &amp; Interactive</h2><span class="sec-rule"></span><span class="sec-count">2 projects</span>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/dungeon.png" alt="Procedural dungeon crawler screenshot" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">Java</span><span class="tag alt">Procedural Generation</span></div>
+          <h3>Procedural Dungeon Crawler</h3>
+          <p class="desc">Engineered a high-performance generator using density maps and a BSP tree to produce GiB-scale dungeons in seconds. Built a class-based combat system with enemy AI and leveling; integrated an adaptive HUD, and a multi-slot save + full replay system for complete state persistence.</p>
+          <p class="note">Private repository — access on request.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/2048.png" alt="2048 game board screenshot" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag">Java</span><span class="tag alt">GUI</span></div>
+          <h3>2048 Game</h3>
+          <p class="desc">Implemented 2048 with an object-oriented grid state manager, deterministic merging &amp; spawning logic, move history, scoring, and a responsive keyboard-driven GUI with smooth animations.</p>
+          <p class="note">Private repository — access on request.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 05 RESEARCH ============ -->
+  <section id="research">
+    <div class="sec-head reveal">
+      <span class="sec-num">05</span><h2>Research</h2><span class="sec-rule"></span><span class="sec-count">5 papers &amp; talks</span>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/des_mlp.png" alt="DES and MLP paper thumbnail" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Cryptography · ML</span></div>
+          <h3>Studying S-Boxes and the Feistel Network in DES with the Multilayer Perceptron Model</h3>
+          <p class="desc">Conducted a linear cryptanalysis of the Data Encryption Standard (DES) using a multilayer perceptron (MLP) model trained on plaintext–ciphertext pairs. Implemented Python and Mathematica experiments to analyze how neural networks approximate S-box mappings and how imperfect S-box designs can be exploited. Explored the correlation between training accuracy and the number of Feistel rounds, demonstrating how learning behavior reveals structural patterns in block ciphers.</p>
+          <p class="note">University of Waterloo — supervised by Prof. Gautam Kamath. Code and implementation details available upon request.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/MLP_DES.pdf" target="_blank" rel="noopener">Read paper
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/wordbialgebra_slide.png" alt="Word bialgebra presentation slide" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Algebra · Combinatorics</span></div>
+          <h3>Cointeractions of Some Word Bialgebras</h3>
+          <p class="desc">Studied Hopf algebra structures and cointeractions between concatenation–deshuffle and shuffle–deconcatenation bialgebras. Explored gradings, antipodes, and potential combinatorial applications.</p>
+          <p class="note">University of Waterloo — supervised by Prof. Karen Yeats.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/Word_Bialgebra_Presentation.pdf" target="_blank" rel="noopener">View slides
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+            <a class="link-btn" href="https://sigmundr6.github.io/Word_Bialgebra_Paper.pdf" target="_blank" rel="noopener">Read paper
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/qip_slide.png" alt="Quantum algorithms presentation slide" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Quantum Computing</span></div>
+          <h3>Quantum Algorithms for Finite Solvable Groups</h3>
+          <p class="desc">Presented an exposition of Watrous’ 2001 algorithm for computing orders of solvable groups using quantum Fourier transforms and subgroup superpositions.</p>
+          <p class="note">University of Waterloo — supervised by Prof. Richard Cleve.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/QIP_Presentation.pdf" target="_blank" rel="noopener">View slides
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/sidh.png" alt="SIDH paper thumbnail" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Post-Quantum Crypto</span></div>
+          <h3>Supersingular Isogeny Diffie–Hellman (SIDH) Cryptography</h3>
+          <p class="desc">Wrote an expository paper explaining elliptic-curve isogenies and the mathematical foundations of the Supersingular Isogeny Diffie–Hellman key exchange protocol. Detailed the algebraic structure of elliptic curve groups, rational isogenies, and Vélu’s formula. Analyzed the post-quantum security assumptions underlying SIDH and its relation to the hardness of computing supersingular isogenies.</p>
+          <p class="note">University of Waterloo — supervised by Prof. Douglas Stebila.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/SIDH.pdf" target="_blank" rel="noopener">Read paper
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/psl2q_slide.png" alt="Group theory presentation slide" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Group Theory</span></div>
+          <h3>The Replacement Property for PSL(2, q) and C-Group Theory</h3>
+          <p class="desc">Presented at the Cornell Summer Program for Undergraduate Research (SPUR 2017). Studied the replacement property in projective special linear groups PSL(2, q) and its relation to C-groups and regular polytopes. Analyzed irredundant generating sequences, involution structures, and the classification of maximal subgroups via Dickson’s theorem. Explored connections between abstract group theory and geometric combinatorics.</p>
+          <p class="note">Cornell University — directed by Prof. R. Keith Dennis and Ravi Fernando.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/SPUR_Presentation.pdf" target="_blank" rel="noopener">View slides
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 06 BEYOND TECH ============ -->
+  <section id="beyond">
+    <div class="sec-head reveal">
+      <span class="sec-num">06</span><h2>Beyond Technology</h2><span class="sec-rule"></span><span class="sec-count">4 pieces</span>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/opera.png" alt="Cornell Opera Society" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Opera · Presentation</span></div>
+          <h3>Elektra: From Sophocles to Richard Strauss</h3>
+          <p class="desc">Explored the transformation of the <em>Elektra</em> myth from ancient Greek tragedy to modernist opera, tracing its psychological and musical evolution. Analyzed leitmotifs, orchestration, and the expression of tragic consciousness in Strauss’s setting of Hofmannsthal’s text.</p>
+          <p class="note">Cornell University — presentation for the Opera Society.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/Elektra.pdf" target="_blank" rel="noopener">View slides
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/chiron.jpg" alt="Chiron teaching Achilles, classical relief" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Classics · Essay</span></div>
+          <h3>Chiron’s Teaching and His Pupils</h3>
+          <p class="desc">Analyzed the moral paradoxes of Chiron’s mentorship in Greco-Roman literature, from Homer to Ovid. Argued that while Chiron successfully trained heroes in valor, he failed to instill virtue, leading to recurring flaws of lust, pride, and tyranny among his pupils. Examined how myth reflects the ancient tension between education, morality, and paternal absence.</p>
+          <p class="note">Cornell University — Classics essay.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/Chiron%27s%20Teaching%20and%20His%20Pupils.pdf" target="_blank" rel="noopener">Read essay
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/beowulf.jpg" alt="Beowulf manuscript illustration" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Medieval Studies · Essay</span></div>
+          <h3>The Multifaceted Irony in <em>Beowulf</em></h3>
+          <p class="desc">Examined the ironic coexistence of Christian and pagan elements in <em>Beowulf</em>, showing how the poet reconciles conflicting myths, values, and heroic ideals. Analyzed parallels between Beowulf, Sigmund, and Heremod, and explored the use of skaldic irony, misnomer, and anachronism in Old English epic style.</p>
+          <p class="note">Cornell University — Medieval Studies essay.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/The%20Multifaceted%20Irony%20in%20Beowulf.pdf" target="_blank" rel="noopener">Read essay
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb"><img src="https://sigmundr6.github.io/images/ossian.jpg" alt="Ossian painting" loading="lazy"></div>
+        <div class="card-body">
+          <div class="tags"><span class="tag alt">Poetry · Creative Writing</span></div>
+          <h3>The Songs of Selma in Verse</h3>
+          <p class="desc">Composed an original poetic adaptation of the Ossianic fragment <em>The Songs of Selma</em>, blending Celtic myth and Romantic melancholy. Structured in the trochaic octameter of Poe’s <em>The Raven</em>, the poem reimagines Ossian’s lament through rhythmic precision and recurring internal rhyme. Explores themes of fate, memory, and the sea’s voice as chorus.</p>
+          <p class="note">Creative writing project.</p>
+          <div class="links">
+            <a class="link-btn" href="https://sigmundr6.github.io/The%20Songs%20of%20Selma%20in%20Verse.txt" target="_blank" rel="noopener">Read poem
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h9m0 0L8.5 4.5M12 8l-3.5 3.5M5 3h8v10H5"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span>© 2026 Hongyu (Hector) Li</span>
+    <span>Content from <a href="https://sigmundr6.github.io/" target="_blank" rel="noopener">sigmundr6.github.io</a> · Redesigned October 2026</span>
   </div>
-</section>
+</footer>
 
-<!-- AI / Data -->
-<section id="ai-data">
-  <h2>AI / Data</h2>
-  <div class="projects">
+<script>
+(function(){
+  // scroll progress + nav state
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    nav.classList.toggle('scrolled', h.scrollTop > 12);
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 
-    <div class="card">
-      <img src="images/MNIST.png" alt="MNIST Digits Dataset (Source: Wikipedia)">
-      <div class="card-content">
-        <h3>Image Classifier in RISC-V Assembly</h3>
-        <p>Implemented a multilayer perceptron entirely in RISC-V assembly to classify MNIST digits. Manually managed
-           memory layout, matrix ops, and activation computations, demonstrating efficient arithmetic and control flow
-           on a custom ISA.</p>
-        <p><em>Private Repository — Access on Request.</em></p>
-      </div>
-    </div>
+  // duplicate marquee content for a seamless loop
+  var track = document.getElementById('stripTrack');
+  track.innerHTML += track.innerHTML;
 
-    <div class="card">
-      <img src="images/wordnet.png" alt="WordNet Visualizer Screenshot">
-      <div class="card-content">
-        <h3>WordNet Visualizer (Java)</h3>
-        <p>Parsed large synonym–hyponym CSV datasets (400 MiB+) and constructed directed word graphs with efficient
-           BFS traversal and pruning. Generated interactive HTML visualizations for exploring lexical relationships.</p>
-        <p><em>Private Repository — Access on Request.</em></p>
-      </div>
-    </div>
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: .08, rootMargin: '0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  </div>
-</section>
-
-<!-- Games & Interactive -->
-<section id="games">
-  <h2>Games & Interactive</h2>
-  <div class="projects">
-
-    <div class="card">
-      <img src="images/dungeon.png" alt="Procedural Dungeon Crawler Screenshot">
-      <div class="card-content">
-        <h3>Procedural Dungeon Crawler (Java)</h3>
-        <p>Engineered a high-performance generator using density maps and a BSP tree to produce GiB-scale dungeons in
-           seconds. Built a class-based combat system with enemy AI and leveling; integrated an adaptive HUD, and a
-           multi-slot save + full replay system for complete state persistence.</p>
-        <p><em>Private Repository — Access on Request.</em></p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="images/2048.png" alt="2048 Game Board Screenshot">
-      <div class="card-content">
-        <h3>2048 Game (Java)</h3>
-        <p>Implemented 2048 with an object-oriented grid state manager, deterministic merging & spawning logic,
-           move history, scoring, and a responsive keyboard-driven GUI with smooth animations.</p>
-        <p><em>Private Repository — Access on Request.</em></p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="research">
-  <h2>Research</h2>
-
-  <div class="projects">
-
-    <div class="card">
-    <img src="images/des_mlp.png" alt="DES and MLP Paper Thumbnail">
-    <div class="card-content">
-        <h3>Studying S-Boxes and the Feistel Network in DES with the Multilayer Perceptron Model</h3>
-        <p>Conducted a linear cryptanalysis of the Data Encryption Standard (DES) using a multilayer perceptron (MLP)
-        model trained on plaintext–ciphertext pairs. Implemented Python and Mathematica experiments to analyze
-        how neural networks approximate S-box mappings and how imperfect S-box designs can be exploited. Explored
-        the correlation between training accuracy and the number of Feistel rounds, demonstrating how learning
-        behavior reveals structural patterns in block ciphers.</p>
-        <p><em>University of Waterloo — Supervised by Prof. Gautam Kamath</em></p>
-        <p><em>Code and implementation details available upon request.</em></p>
-        <a href="MLP_DES.pdf">Read Paper →</a>
-    </div>
-    </div>
-
-    <div class="card">
-      <img src="images/wordbialgebra_slide.png" alt="Word Bialgebra Presentation">
-      <div class="card-content">
-        <h3>Cointeractions of Some Word Bialgebras</h3>
-        <p>Studied Hopf algebra structures and cointeractions between concatenation–deshuffle and shuffle–deconcatenation
-           bialgebras. Explored gradings, antipodes, and potential combinatorial applications.</p>
-        <p><em>University of Waterloo — Supervised by Prof. Karen Yeats</em></p>
-        <a href="Word_Bialgebra_Presentation.pdf">View Presentation Slides →</a>
-        <a href="Word_Bialgebra_Paper.pdf">Read Paper →</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="images/qip_slide.png" alt="Quantum Algorithms Presentation">
-      <div class="card-content">
-        <h3>Quantum Algorithms for Finite Solvable Groups</h3>
-        <p>Presented an exposition of Watrous’ 2001 algorithm for computing orders of solvable groups using
-           quantum Fourier transforms and subgroup superpositions.</p>
-        <p><em>University of Waterloo — Supervised by Prof. Richard Cleve</em></p>
-        <a href="QIP_Presentation.pdf">View Presentation Slides →</a>
-      </div>
-    </div>
-
-    <div class="card">
-    <img src="images/sidh.png" alt="SIDH Paper Thumbnail">
-    <div class="card-content">
-        <h3>Supersingular Isogeny Diffie–Hellman (SIDH) Cryptography</h3>
-        <p>Wrote an expository paper explaining elliptic-curve isogenies and the mathematical foundations of the
-        Supersingular Isogeny Diffie–Hellman key exchange protocol. Detailed the algebraic structure of elliptic
-        curve groups, rational isogenies, and Vélu’s formula. Analyzed the post-quantum security assumptions
-        underlying SIDH and its relation to the hardness of computing supersingular isogenies.</p>
-        <p><em>University of Waterloo - Supervised by Prof. Douglas Stebila</em></p>
-        <a href="SIDH.pdf">Read Paper →</a>
-    </div>
-    </div>
-
-    <div class="card">
-  <img src="images/psl2q_slide.png" alt="Group Theory Presentation">
-  <div class="card-content">
-    <h3>The Replacement Property for PSL(2, q) and C-Group Theory</h3>
-    <p>Presented at the Cornell Summer Program for Undergraduate Research (SPUR 2017). Studied the replacement
-       property in projective special linear groups PSL(2, q) and its relation to C-groups and regular polytopes.
-       Analyzed irredundant generating sequences, involution structures, and the classification of maximal subgroups
-       via Dickson’s theorem. Explored connections between abstract group theory and geometric combinatorics.</p>
-    <p><em>Cornell University — Directed by Prof. R. Keith Dennis and Ravi Fernando</em></p>
-    <a href="SPUR_Presentation.pdf">View Presentation Slides →</a>
-  </div>
-</div>
-
-  </div>
-</section>
-
-<section id="beyond">
-  <h2>Beyond Technology</h2>
-  <div class="projects">
-
-    <div class="card">
-      <img src="images/opera.png" alt="Cornell Opera Society">
-      <div class="card-content">
-        <h3>Elektra: From Sophocles to Richard Strauss</h3>
-        <p>Explored the transformation of the <em>Elektra</em> myth from ancient Greek tragedy to modernist opera,
-           tracing its psychological and musical evolution. Analyzed leitmotifs, orchestration, and the expression
-           of tragic consciousness in Strauss’s setting of Hofmannsthal’s text.</p>
-        <p><em>Cornell University — Presentation for the Opera Society</em></p>
-        <a href="Elektra.pdf">View Presentation Slides →</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="images/chiron.jpg" alt="Chiron Teaching Achilles (Classical Relief)">
-      <div class="card-content">
-        <h3>Chiron’s Teaching and His Pupils</h3>
-        <p>Analyzed the moral paradoxes of Chiron’s mentorship in Greco-Roman literature, from Homer to Ovid.
-           Argued that while Chiron successfully trained heroes in valor, he failed to instill virtue, leading to
-           recurring flaws of lust, pride, and tyranny among his pupils. Examined how myth reflects the ancient
-           tension between education, morality, and paternal absence.</p>
-        <p><em>Cornell University — Classics Essay</em></p>
-        <a href="Chiron's Teaching and His Pupils.pdf">Read Essay →</a>
-      </div>
-    </div>
-
-    <div class="card">
-  <img src="images/beowulf.jpg" alt="Beowulf Manuscript Illustration">
-  <div class="card-content">
-    <h3>The Multifaceted Irony in <em>Beowulf</em></h3>
-    <p>Examined the ironic coexistence of Christian and pagan elements in <em>Beowulf</em>, showing how the poet
-       reconciles conflicting myths, values, and heroic ideals. Analyzed parallels between Beowulf, Sigmund,
-       and Heremod, and explored the use of skaldic irony, misnomer, and anachronism in Old English epic style.</p>
-    <p><em>Cornell University — Medieval Studies Essay</em></p>
-    <a href="The Multifaceted Irony in Beowulf.pdf">Read Essay →</a>
-  </div>
-</div>
-
-<div class="card">
-  <img src="images/ossian.jpg" alt="Ossian Painting">
-  <div class="card-content">
-    <h3>The Songs of Selma in Verse</h3>
-    <p>Composed an original poetic adaptation of the Ossianic fragment <em>The Songs of Selma</em>, blending
-       Celtic myth and Romantic melancholy. Structured in the trochaic octameter of Poe’s <em>The Raven</em>,
-       the poem reimagines Ossian’s lament through rhythmic precision and recurring internal rhyme. Explores
-       themes of fate, memory, and the sea’s voice as chorus.</p>
-    <p><em>Creative Writing Project</em></p>
-    <a href="The Songs of Selma in Verse.txt">Read Poem →</a>
-  </div>
-</div>
-
-  </div>
-</section>
-
-  <footer>
-    © 2025 Hongyu (Hector) Li — <a href="https://sigmundr6.github.io/">sigmundr6.github.io</a>
-  </footer>
+  // active nav link
+  var links = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); })
+                  .filter(Boolean);
+  var navIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, {rootMargin: '-40% 0px -55% 0px'});
+  secs.forEach(function(s){ navIO.observe(s); });
+})();
+</script>
 </body>
 </html>
